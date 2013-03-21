@@ -1,7 +1,7 @@
 /*!
  * Cookie Policy script v0.0.1
  * https://github.com/dulare/CookieScript
- * 
+ *
  * Copyright 2013 Pawel Dulak
  * Released under the MIT license
  */
@@ -12,7 +12,7 @@ var CookieScriptSecondLineOfText = 'Understood, do not show this window again.';
 function CookieScriptSetCookie(c_name,value,exdays) {
 	var exdate=new Date();
 	exdate.setDate(exdate.getDate() + exdays);
-	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString()) + "; path=" + escape('/');
 	document.cookie=c_name + "=" + c_value;
 }
 
@@ -29,11 +29,11 @@ function CookieScriptGetCookie(c_name) {
 }
 
 function CookieScriptInsertDiv() {
-	$('body').append('<div id="cookiesDiv"><p>' 
-					+ CookieScriptFirstLineOfText 
-					+ '</p><p><a href="cookiespolicy.htm?accepted" id="cookiesPolicyAccepted">' 
-					+ CookieScriptSecondLineOfText 
-					+ '</a></p></div>');	
+	$('body').append('<div id="cookiesDiv"><p>'
+					+ CookieScriptFirstLineOfText
+					+ '</p><p><a href="cookiespolicy.htm?accepted" id="cookiesPolicyAccepted">'
+					+ CookieScriptSecondLineOfText
+					+ '</a></p></div>');
 }
 
 $(document).ready(function() {
@@ -41,14 +41,14 @@ $(document).ready(function() {
 		//nothing to do, policy accepted
 	} else {
 		CookieScriptInsertDiv();
-		
+
 		$('#cookiesDiv').fadeIn();
-	
+
 		$('#cookiesPolicyAccepted').click(function() {
 			CookieScriptSetCookie('cookiesPolicyAccepted','1',9999);
 			$('#cookiesDiv').fadeOut();
 			return false;
-		}) 
+		})
 	}
 });
- 
+
