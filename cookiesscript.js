@@ -1,5 +1,6 @@
 /*!
  * Cookie Policy script v0.0.1
+ * https://github.com/dulare/CookieScript
  * 
  * Copyright 2013 Pawel Dulak
  * Released under the MIT license
